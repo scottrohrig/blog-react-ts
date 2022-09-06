@@ -1,10 +1,14 @@
-import { PostDeleteData, PostFormData, PostsState, PostState } from "./postSlice";
+import { PostDeleteData, PostFormData, PostsState } from "./postSlice";
 
 const API_URL = 'http://localhost:3000';
 const headers: Record<string, string> = {
   "Content-Type": 'application/json',
 }
 
+const handleError = (error: Error) => {
+  console.log("Error", error);
+  return {} as PostsState;
+}
 
 export const fetchPosts = async () => {
   return fetch(`${API_URL}/posts.json`, {
@@ -12,10 +16,7 @@ export const fetchPosts = async () => {
     headers,
   })
     .then((response) => response.json())
-    .catch(err => {
-      console.log("Error", err)
-      return {} as PostsState;
-    })
+    .catch(err => handleError(err))
 }
 
 export const createPost = async (payload: PostFormData) => {
@@ -26,10 +27,18 @@ export const createPost = async (payload: PostFormData) => {
     body: JSON.stringify({ post })
   })
     .then((response) => response.json())
-    .catch(err => {
-      console.log("Error", err)
-      return {} as PostsState;
-    })
+    .catch(err => handleError(err))
+}
+
+export const editPost = async (payload: PostFormData) => {
+  const post = payload.post
+  return fetch(`${API_URL}/posts/${post.id}.json`, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify({post})
+  })
+    .then(response => response.json())
+    .catch(err => handleError(err))
 }
 
 export const destroyPost = async (payload: PostDeleteData) => {
@@ -40,8 +49,5 @@ export const destroyPost = async (payload: PostDeleteData) => {
     body: JSON.stringify({ post })
   })
     .then((response) => response.json())
-    .catch(err => {
-      console.log("Error", err)
-      return {} as PostsState;
-    })
+    .catch(err => handleError(err))
 }

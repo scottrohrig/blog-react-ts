@@ -1,24 +1,9 @@
-# README
+# React on Rails Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+- A React app written in TypeScript Utilizing a Rails API for CRUD operations. This project is based on the following by [Deanout](https://github.com/Deanout/react-crud)
 
-* Ruby version
+## Issue
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Editing the post and submitting it does not trigger an update properly.

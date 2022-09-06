@@ -27,9 +27,9 @@ const PostForm = () => {
     <div>
       <h1>PostForm</h1>
 
-      <form className=''>
-        <div className="input-group">
-          <div className="form-floating flex-shrink-1 ">
+      <form className='card card-body '>
+        <div className="mb-1 ">
+          <div className="form-floating text-start ">
 
             <input
               type="text"
@@ -44,7 +44,7 @@ const PostForm = () => {
             <div className="invalid-feedback">Title must not be blank.</div>
           </div>
 
-          <div className="form-floating mb-1 w-50">
+          <div className="form-floating  text-start">
             <textarea
               name="body"
               id="body"
@@ -61,7 +61,7 @@ const PostForm = () => {
 
         </div>
         <button
-          className=" btn btn-primary "
+          className=" btn btn-primary w-50 mx-auto"
           type='submit'
           onClick={(e:any) => submitHandler(e)}
         >Submit</button>
